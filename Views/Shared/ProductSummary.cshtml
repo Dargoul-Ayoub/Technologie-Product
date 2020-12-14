@@ -1,0 +1,26 @@
+﻿
+@model Product
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+@{
+   
+}
+<div class="card flex-row p-3 mb-3">
+    @if (Model.ImageData != null)
+    {
+        <img style="width:200px;height:200px" src="@Url.Action("getImage","Admin",new { productID = @Model.ProductID})" alt="@Model.Description" />
+    }
+    else
+    {
+        <img style="width:200px;height:200px" src="~/images/noimage.png" alt="No Image" />
+    }
+    <div class="card-body">
+        <h3>
+            <strong>@Model.Name</strong>
+            <span class="float-right badge badge-danger text-warning">@Model.Price.ToString("c")</span>
+            <br /><br />
+            @Html.ActionLink("Add to cart", "AddToCarte", "Carte", new { productId = Model.ProductID, returnUrl = Context.Request.Path }, new { @class = "btn btn-success float-right" })
+        </h3>
+        <span class="lead">@Model.Description</span>
+    </div>
+</div>

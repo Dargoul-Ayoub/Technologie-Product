@@ -1,0 +1,48 @@
+﻿@model ShippingDetail
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Order</h1>
+<form asp-action="Order">
+    @Html.ValidationMessage("Empty" , new {@class ="text-danger font-weight-bold"} )
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.FirstName)
+        <input asp-for="FirstName" class="form-control w-50" />
+        <span asp-validation-for="FirstName" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.LastName)
+        <input asp-for="LastName" class="form-control w-50" />
+        <span asp-validation-for="LastName" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.Adress)
+        <input asp-for="Adress" class="form-control w-50" />
+        <span asp-validation-for="Adress" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.City)
+        <input asp-for="City" class="form-control w-50" />
+        <span asp-validation-for="City" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.State)
+        <input asp-for="State" class="form-control w-50" />
+        <span asp-validation-for="State" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.Zip)
+        <input asp-for="Zip" class="form-control w-50" />
+        <span asp-validation-for="Zip" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+        @Html.DisplayNameFor(x => x.Country)
+        <input asp-for="Country" class="form-control w-50" />
+        <span asp-validation-for="Country" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" value="Complete Order" type="submit" />
+    </div>
+
+</form>

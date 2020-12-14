@@ -1,0 +1,51 @@
+﻿
+@model TechProduct.Models.PaginatedList<TechProduct.Models.Product>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    @Html.Partial("Summary")
+    <h1 class="display-4">Products</h1>
+
+    @(await Component.InvokeAsync("Nav", ViewBag.CurrentCategory))
+
+    <br />
+    @foreach (var p in Model)
+    {
+        @Html.Partial("ProductSummary", p)
+    }
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        var category = ViewBag.CurrentCategory;
+    }
+
+    <div class="btn-group float-right row">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <a asp-action="Index"
+               asp-route-category="@category"
+               asp-route-pageNumber="@i"
+               class="btn m-1 +@(i == ViewBag.CurrentPage ? " btn-primary " : " btn-secondary ") ">@i</a>
+        }
+    </div>
+
+    <a asp-action="Index"
+       asp-route-category="@category"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       class="btn btn-success m-1 @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-category="@category"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       class="btn btn-success m-1 @nextDisabled">
+        Next
+    </a>
+    <br />
+
+
+</div>
