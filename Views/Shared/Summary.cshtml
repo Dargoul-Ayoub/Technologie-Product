@@ -8,7 +8,7 @@
 <div class="bg-dark card">
     <div class="card-body">
         <h4>
-            @Html.ActionLink("Technologie Products", "Index", "Home", new {category="All"}, new { @class = "btn-dark"})
+            @Html.ActionLink("Technologie Products", "Index", "Home", new {category="All",pageNumber="1"}, new { @class = "btn-dark"})
             @Html.ActionLink("Checkout", "Index", "Carte", null, new { @class = "btn btn-info float-right" })
             <span class="text-white-50 float-right mr-sm-2">Your cart : @countItmes  item(s), @countcarte.ToString("c") </span>
         </h4>
